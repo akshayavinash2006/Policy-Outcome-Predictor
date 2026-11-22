@@ -1,0 +1,176 @@
+{
+  "n_targets": 40,
+  "methods": {
+    "rcf": {
+      "accuracy": 0.3,
+      "accuracy_ci95": [
+        0.175,
+        0.45
+      ],
+      "direction_accuracy": 0.425,
+      "direction_accuracy_ci95": [
+        0.275,
+        0.575
+      ],
+      "coverage": 0.525,
+      "accuracy_answered": 0.3333333333333333,
+      "macro_f1": 0.1963815789473684,
+      "brier": 0.7749095760761947,
+      "brier_ci95": [
+        0.7141986125458643,
+        0.8357511567614856
+      ],
+      "brier_skill_vs_climatology": -0.020390061560038086,
+      "brier_diff_vs_climatology_ci95": [
+        -0.021175895606672365,
+        0.05415404260966469
+      ],
+      "log_loss": 1.4215245819046773,
+      "mae_net_outcome": 0.5436128842218866
+    },
+    "rcf_unweighted": {
+      "accuracy": 0.25,
+      "accuracy_ci95": [
+        0.125,
+        0.4
+      ],
+      "direction_accuracy": 0.475,
+      "direction_accuracy_ci95": [
+        0.325,
+        0.625
+      ],
+      "coverage": 0.525,
+      "accuracy_answered": 0.23809523809523808,
+      "macro_f1": 0.13655462184873948,
+      "brier": 0.7832175608993909,
+      "brier_ci95": [
+        0.7108630538369072,
+        0.8520774712447561
+      ],
+      "brier_skill_vs_climatology": -0.03132989945455322,
+      "brier_diff_vs_climatology_ci95": [
+        -0.025553053413819134,
+        0.07671318471717616
+      ],
+      "log_loss": 1.4321565096509183,
+      "mae_net_outcome": 0.5488390760591131
+    },
+    "game_base_rate": {
+      "accuracy": 0.225,
+      "accuracy_ci95": [
+        0.1,
+        0.375
+      ],
+      "direction_accuracy": 0.35,
+      "direction_accuracy_ci95": [
+        0.2,
+        0.5
+      ],
+      "coverage": 1.0,
+      "accuracy_answered": 0.225,
+      "macro_f1": 0.12137049941927991,
+      "brier": 0.7973155533784433,
+      "brier_ci95": [
+        0.7294181237566665,
+        0.8718154983972501
+      ],
+      "brier_skill_vs_climatology": -0.049893938224618406,
+      "brier_diff_vs_climatology_ci95": [
+        -0.01159293384550624,
+        0.0881783020737944
+      ],
+      "log_loss": 1.46981592679615,
+      "mae_net_outcome": 0.5650740404657486
+    },
+    "game_model": {
+      "accuracy": 0.3,
+      "accuracy_ci95": [
+        0.175,
+        0.45
+      ],
+      "direction_accuracy": 0.475,
+      "direction_accuracy_ci95": [
+        0.325,
+        0.625
+      ],
+      "coverage": 1.0,
+      "accuracy_answered": 0.3,
+      "macro_f1": 0.18810810810810813,
+      "brier": 0.7445324598580085,
+      "brier_ci95": [
+        0.6561265314750724,
+        0.8258385140050278
+      ],
+      "brier_skill_vs_climatology": 0.019610099032691064,
+      "brier_diff_vs_climatology_ci95": [
+        -0.07278903690794733,
+        0.04846301094634257
+      ],
+      "log_loss": 1.3558331800058774,
+      "mae_net_outcome": 0.5278932717446365
+    },
+    "random_k": {
+      "accuracy": 0.225,
+      "accuracy_ci95": [
+        0.1,
+        0.375
+      ],
+      "direction_accuracy": 0.45,
+      "direction_accuracy_ci95": [
+        0.3,
+        0.6
+      ],
+      "coverage": 1.0,
+      "accuracy_answered": 0.225,
+      "macro_f1": 0.1225609756097561,
+      "brier": 0.7729706933683568,
+      "brier_ci95": [
+        0.7204478510487575,
+        0.8261444413278238
+      ],
+      "brier_skill_vs_climatology": -0.017836968003462905,
+      "brier_diff_vs_climatology_ci95": [
+        -0.018291638955238453,
+        0.04155102473249822
+      ],
+      "log_loss": 1.4164404096790113,
+      "mae_net_outcome": 0.5208478730014013
+    },
+    "majority": {
+      "accuracy": 0.325,
+      "accuracy_ci95": [
+        0.175,
+        0.475
+      ],
+      "direction_accuracy": 0.5,
+      "direction_accuracy_ci95": [
+        0.35,
+        0.65
+      ],
+      "coverage": 1.0,
+      "accuracy_answered": 0.325,
+      "macro_f1": 0.13,
+      "brier": 0.759424856501898,
+      "brier_ci95": [
+        0.7073920626596337,
+        0.8108178420154843
+      ],
+      "brier_skill_vs_climatology": 0.0,
+      "brier_diff_vs_climatology_ci95": [
+        0.0,
+        0.0
+      ],
+      "log_loss": 1.3993584940144828,
+      "mae_net_outcome": 0.5078158067156628
+    }
+  },
+  "game_accuracy_knn": 0.375,
+  "retrieval_hit_rate": 0.35,
+  "mean_top_similarity": 0.4914595209062099,
+  "class_distribution": {
+    "mixed": 17,
+    "improved": 11,
+    "worsened": 7,
+    "no_clear_effect": 5
+  }
+}
