@@ -1,5 +1,15 @@
+# --- secrets: API keys live in .env (GROQ_API_KEY), never commit them ---
+.env
+.env.*
+!.env.example
+*.key
+secrets*
+.streamlit/secrets.toml
+
+# --- Python ---
 .venv/
 __pycache__/
-.env
-artifacts/index/
 *.pyc
+
+# --- generated ---
+artifacts/index/

@@ -73,6 +73,21 @@ with tab_fc:
             sector="energy_water_environment", mech="tax", level="central", state=""),
     }
     ex = examples[st.selectbox("Start from an example", list(examples))]
+    # Game model controls sit outside the form so the sliders can react to the selected game.
+    game_opt = st.selectbox("Game model", ["(auto: LLM or nearest precedents)"] + C.GAMES,
+                            format_func=lambda g: G.GAMES[g].name if g in G.GAMES else g)
+    manual_params = None
+    if game_opt in G.GAMES and st.checkbox(
+            "Set the game parameters myself (otherwise estimated from the nearest precedents)"):
+        gm = G.GAMES[game_opt]
+        st.caption(f"Scale: {G.ANCHORS}. Margin: {gm.formula}")
+        cols = st.columns(len(gm.params))
+        manual_params = {}
+        for col, prm in zip(cols, gm.params):
+            manual_params[prm.sym] = col.slider(
+                f"{prm.sym}: {prm.name}", 0.0, 1.0, 0.5, 0.05, key=f"gp_{game_opt}_{prm.sym}",
+                help=prm.guide)
+        st.code(G.equation(game_opt, manual_params), language=None)
     with st.form("policy"):
         c1, c2 = st.columns(2)
         name = c1.text_input("Policy name", ex.get("name", ""))
@@ -87,10 +102,6 @@ with tab_fc:
         level = c5.selectbox("Level", ["", "central", "state"],
                              index=["", "central", "state"].index(ex.get("level", "")))
         state = c6.text_input("State", ex.get("state", ""))
-        game_opt = st.selectbox("Game model", ["(auto: LLM or nearest precedents)"] + C.GAMES,
-                                format_func=lambda g: G.GAMES[g].name if g in G.GAMES else g)
-        hard = st.multiselect("Hard filters (restrict precedents to the same ...)",
-                              ["sector", "mechanism_type", "level"])
         go_btn = st.form_submit_button("Forecast", type="primary")
 
     if go_btn:
@@ -99,10 +110,10 @@ with tab_fc:
             st.stop()
         q = PolicyQuery(policy_name=name, description=desc, stated_goal=goal, target_group=target,
                         sector=sector, mechanism_type=mech, level=level, state=state,
-                        game=None if game_opt.startswith("(") else game_opt)
-        filters = {f: getattr(q, f) for f in hard if getattr(q, f)}
+                        game=None if game_opt.startswith("(") else game_opt,
+                        game_params=manual_params)
         with st.spinner("Retrieving precedents and forecasting ..."):
-            res = pred.predict(q, hard_filters=filters, k=k, use_llm=use_llm, llm_rerank=llm_rerank)
+            res = pred.predict(q, k=k, use_llm=use_llm, llm_rerank=llm_rerank)
         fc = res.forecast
         probs = res.final_probs
 
